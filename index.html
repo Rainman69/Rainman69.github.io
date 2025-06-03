@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Showcase</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000000; /* Completely black background */
+            color: #e0e0e0; /* Light gray text for contrast */
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+        }
+
+        .video-container {
+            width: 100%;
+            max-width: 900px; /* Adjust max-width as desired, or use 100vw for full width */
+            /* height: 60vh; You can set a fixed height or let aspect ratio control it */
+            position: relative;
+            margin-top: 2rem; /* Some space from the top */
+            background-color: #000; /* Ensure container background is black if video has letterboxing */
+            pointer-events: none; /* Makes the video player non-interactive */
+            box-shadow: 0px 10px 30px rgba(255, 255, 255, 0.05); /* Subtle glow for the video player */
+            border-radius: 8px; /* Optional: slightly rounded corners for the player area */
+            overflow: hidden; /* Ensures video stays within rounded corners if any */
+        }
+
+        #autoplayVideo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Covers the container, might crop video */
+            /* object-fit: contain; /* Fits video within container, might show black bars */
+            display: block;
+        }
+
+        /* Hide default video controls if they somehow appear */
+        video::-webkit-media-controls {
+            display: none !important;
+        }
+        video::-webkit-media-controls-enclosure {
+            display: none !important;
+        }
+        video::-webkit-media-controls-panel {
+            display: none !important;
+        }
+        video::-webkit-media-controls-play-button {
+            display: none !important;
+        }
+        video::-webkit-media-controls-timeline {
+            display: none !important;
+        }
+        video::-webkit-media-controls-current-time-display {
+            display: none !important;
+        }
+        video::-webkit-media-controls-time-remaining-display {
+            display: none !important;
+        }
+        video::-webkit-media-controls-mute-button {
+            display: none !important;
+        }
+        video::-webkit-media-controls-volume-slider {
+            display: none !important;
+        }
+        video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+
+        .caption-container {
+            width: 100%;
+            max-width: 900px; /* Match video container max-width */
+            padding: 1.5rem; /* 24px */
+            text-align: center;
+            margin-top: 1rem; /* Space between video and caption */
+        }
+
+        .caption-text {
+            font-size: 1rem; /* 16px */
+            line-height: 1.6;
+            color: #a0a0a0; /* Slightly dimmer text for caption */
+        }
+
+        @media (max-width: 768px) {
+            .video-container {
+                margin-top: 1rem;
+                /* height: 50vh; */
+            }
+            .caption-text {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="video-container">
+        <video id="autoplayVideo" autoplay loop playsinline muted>
+            <!--
+                IMPORTANT: Replace the 'src' attribute below with the path to YOUR video file.
+                For testing, I'm using a placeholder video from Pixabay.
+                If your video is in the same folder as this HTML file, you can just use: src="your-video-filename.mp4"
+                If it's in a subfolder (e.g., 'videos'), use: src="videos/your-video-filename.mp4"
+            -->
+            <source src="https://cdn.pixabay.com/video/2024/01/08/194916-903566491_large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="caption-container">
+        <p id="videoCaption" class="caption-text">
+            This is a placeholder caption for the video above. You can edit this text to describe your video or add any relevant information. This area is designed to be simple and clean, complementing the video showcase.
+        </p>
+    </div>
+
+    <script>
+        const videoElement = document.getElementById('autoplayVideo');
+
+        // Attempt to play with sound.
+        // Browsers have strict autoplay policies, especially with sound.
+        // This might not work in all browsers without prior user interaction on the site.
+        // The 'muted' attribute is initially set to help with autoplay, then we try to unmute.
+        videoElement.muted = false; // Try to unmute
+
+        videoElement.play().then(() => {
+            console.log("Video playback started.");
+            videoElement.muted = false; // Ensure it's unmuted if autoplay was successful
+        }).catch(error => {
+            console.error("Video autoplay was prevented:", error);
+            // If autoplay with sound is prevented, it might play muted due to the attribute.
+            // You could add a small "Click to unmute" button here if needed,
+            // but the request was for a non-interactive player.
+            // For now, we'll leave it as is, and it might play muted.
+            // If you remove 'muted' from the HTML, it might not autoplay at all.
+        });
+
+        // You can change the caption text dynamically if needed:
+        // document.getElementById('videoCaption').textContent = "Your new dynamic caption here.";
+
+        // You can change the video source dynamically if needed:
+        // const newVideoSource = "path/to/your/other_video.mp4";
+        // videoElement.src = newVideoSource;
+        // videoElement.load(); // Important to load the new source
+        // videoElement.play().catch(e => console.error("Error playing new video:", e));
+
+    </script>
+
+</body>
+</html>
