@@ -6,6 +6,8 @@
     <title>Interactive AI Character</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Include the Puter.js library -->
+    <script src="https://js.puter.com/v2/"></script>
     <style>
         /* Custom styles for the page and character */
         body {
@@ -126,29 +128,6 @@
             right: calc(50% - 10px);
             transform: rotate(-15deg);
         }
-
-        .character-detail {
-            position: absolute;
-            bottom: 35px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .detail-line {
-            width: 2px;
-            height: 15px;
-            background-color: #1f2937;
-        }
-
-        .detail-circle {
-            width: 8px;
-            height: 8px;
-            background-color: #1f2937;
-            border-radius: 50%;
-        }
         
         #answer-output {
             white-space: pre-wrap;
@@ -196,18 +175,15 @@
             <div class="arm right-arm"></div>
             <div class="leg left-leg"></div>
             <div class="leg right-leg"></div>
-            <div class="character-detail">
-                <div class="detail-line"></div>
-                <div class="detail-circle"></div>
-            </div>
         </div>
 
         <!-- AI Q&A Section -->
         <div class="w-full max-w-2xl p-6 bg-white rounded-xl shadow-lg">
             <h2 class="text-2xl font-bold mb-4 text-center text-gray-700">Ask Me Anything</h2>
             
-            <!-- Input Area -->
+            <!-- Question Input Area -->
             <div class="mb-4">
+                 <label for="question-input" class="block text-sm font-medium text-gray-700 mb-1">Your Question</label>
                 <textarea id="question-input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" rows="3" placeholder="Type your question here..."></textarea>
             </div>
             
@@ -229,10 +205,10 @@
     <!-- Footer -->
     <footer class="w-full text-center p-5 bg-white border-t border-gray-200">
         <p class="text-gray-600 inline-flex items-center">
-            Made by DamnAmo with HTML, CSS, and the Gemini API.
+            Made by DamnAmo
             <a href="https://t.me/DamnAmo" aria-label="DamnAmo on Telegram" target="_blank" rel="noopener noreferrer" class="ml-2 text-blue-500 hover:text-blue-700 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-1.168.486-4.666 2.01-5.64 2.34A.63.63 0 0 0 2 8.71c.224.23.593.428.97.563.38.135.84.28 1.25.365.41.085.92.16 1.39-.24.47-.4.9-1.04 1.25-1.51.35-.47.67-1.02.93-1.44.26-.42.5-.8.7-1.1.2-.3.35-.55.45-.75.1-.2.15-.35.15-.45s-.05-.15-.1-.15-.1 0-.15.05c-.05.05-.1.1-.15.15l-1.5 1.5c-.5.5-1 .95-1.4 1.35-.4.4-.75.75-1.05 1.05-.3.3-.55.55-.75.75-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c-.05.05-.05.05-.05.05s0 .05.05.05c.05 0 .1 0 .15-.05.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15-.05.15-.1.2c-.05.05-.1.1-.15.15-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15c0 .05-.05.1-.1.15s-.1.1-.15.15c-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15c0 .05-.05.1-.1.15s-.1.1-.15.15c-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05z"/>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906c-1.168.486-4.666 2.01-5.64 2.34A.63.63 0 0 0 2 8.71c.224.23.593.428.97.563.38.135.84.28 1.25.365.41.085.92.16 1.39-.24.47-.4.9-1.04 1.25-1.51.35-.47.67-1.02.93-1.44.26-.42.5-.8.7-1.1.2-.3.35-.55.45-.75.1-.2.15-.35.15-.45s-.05-.15-.1-.15-.1 0-.15.05c-.05.05-.1.1-.15.15l-1.5 1.5c-.5.5-1 .95-1.4 1.35-.4.4-.75.75-1.05 1.05-.3.3-.55.55-.75.75-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c-.05.05-.05.05-.05.05s0 .05.05.05c.05 0 .1 0 .15-.05.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15-.05.15-.1.2c-.05.05-.1.1-.15.15-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15c0 .05-.05.1-.1.15s-.1.1-.15.15c-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15c0 .05-.05.1-.1.15s-.1.1-.15.15c-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05z"/>
                 </svg>
             </a>
         </p>
@@ -245,53 +221,32 @@
 
             // --- Pupil Mouse Tracking ---
             function movePupils(event) {
-                // Clear any existing timer to prevent resetting while the mouse is active
                 clearTimeout(inactivityTimer);
-
                 pupils.forEach(pupil => {
-                    // Get the bounding box of the parent eye element
                     const eye = pupil.parentElement;
                     const rect = eye.getBoundingClientRect();
                     const eyeCenterX = rect.left + rect.width / 2;
                     const eyeCenterY = rect.top + rect.height / 2;
-                    
-                    // Get the mouse coordinates
                     const mouseX = event.clientX;
                     const mouseY = event.clientY;
-
-                    // Calculate the angle between the eye center and the mouse
                     const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
-                    
-                    // Define how far the pupil can move from the center
-                    // This is roughly half the eye's width minus half the pupil's width
-                    const maxMove = (rect.width / 2) - (pupil.offsetWidth / 2) - 2; // -2 for a small buffer
-                    
-                    // Calculate the new position for the pupil
+                    const maxMove = (rect.width / 2) - (pupil.offsetWidth / 2) - 2;
                     const x = Math.cos(angle) * maxMove;
                     const y = Math.sin(angle) * maxMove;
-
-                    // Apply the new position using transform for smooth animation
-                    // We keep the initial translate(-50%, -50%) for centering the pupil
                     pupil.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
                 });
-
-                // Set a timer to reset the pupils' position after 2 seconds of inactivity
                 inactivityTimer = setTimeout(resetPupils, 2000);
             }
 
             // --- Pupil Position Reset ---
             function resetPupils() {
                 pupils.forEach(pupil => {
-                    // Reset to the default centered position
                     pupil.style.transform = 'translate(-50%, -50%)';
                 });
             }
 
-            // Add the event listener for mouse movement
             window.addEventListener('mousemove', movePupils);
-            // Initial reset to center the pupils when the page loads
             resetPupils();
-
 
             // --- AI Q&A Section ---
             const submitButton = document.getElementById('submit-question');
@@ -303,7 +258,7 @@
             async function getAiAnswer() {
                 const prompt = questionInput.value.trim();
                 if (!prompt) {
-                    answerOutput.textContent = 'Please enter a question first.';
+                    answerOutput.textContent = 'Please enter a question.';
                     return;
                 }
 
@@ -313,46 +268,24 @@
                 submitButton.classList.add('opacity-50', 'cursor-not-allowed');
 
                 try {
-                    // Prepare the payload for the Gemini API
-                    const payload = {
-                        contents: [{
-                            role: "user",
-                            parts: [{ text: prompt }]
-                        }],
-                    };
-                    
-                    // You don't need to provide an API key for gemini-2.0-flash
-                    const apiKey = "";
-                    const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+                    // Use Puter.js to get an AI response
+                    const response = await puter.ai.chat(prompt);
 
-                    // Make the API call
-                    const response = await fetch(apiUrl, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(payload)
-                    });
+                    let aiResponseText = 'Could not get a valid answer from the AI.';
 
-                    if (!response.ok) {
-                        const errorData = await response.json();
-                        throw new Error(errorData.error.message || `API Error: ${response.status}`);
-                    }
-                    
-                    const result = await response.json();
-
-                    // Extract and display the text from the response
-                    if (result.candidates && result.candidates.length > 0 &&
-                        result.candidates[0].content && result.candidates[0].content.parts &&
-                        result.candidates[0].content.parts.length > 0) {
-                        const text = result.candidates[0].content.parts[0].text;
-                        answerOutput.textContent = text;
+                    // The response from puter.ai.chat is the completed message string.
+                    if (typeof response === 'string' && response.trim() !== '') {
+                        aiResponseText = response;
                     } else {
-                        // Handle cases where the response structure is unexpected
-                        answerOutput.textContent = 'Sorry, I received an unexpected response from the AI. Please try again.';
+                        // Log the unexpected response for debugging
+                        console.warn("Puter.js gave an unexpected response:", response);
                     }
+                    
+                    answerOutput.textContent = aiResponseText;
 
                 } catch (error) {
-                    console.error('Error fetching AI response:', error);
-                    answerOutput.textContent = `An error occurred: ${error.message}. Please check the console for details.`;
+                    console.error('Error fetching AI response from Puter.js:', error);
+                    answerOutput.textContent = `An error occurred: ${error.message}. The AI service may be unavailable or require login.`;
                 } finally {
                     // Re-enable the button after the request is complete
                     submitButton.disabled = false;
