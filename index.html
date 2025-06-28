@@ -3,109 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Character</title>
+    <title>Character Design</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-family: 'Arial', sans-serif;
-            overflow: hidden;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             cursor: none;
-        }
-
-        .container {
-            position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 40px;
         }
 
         .character {
             position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         .character::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 60px;
-            background-color: rgba(190, 190, 190, 0.3);
+            width: 500px;
+            height: 100px;
+            background-color: #bebebe;
             border-radius: 50%;
             bottom: -20px;
             z-index: -1;
             left: 50%;
             transform: translateX(-50%);
-        }
-
-        /* Head */
-        .head {
-            position: relative;
-            width: 120px;
-            height: 120px;
-            background: #ef7d0d;
-            border: 4px solid #000;
-            border-radius: 50%;
-            margin-bottom: 10px;
-            z-index: 10;
-        }
-
-        /* Eyes */
-        .eye {
-            position: absolute;
-            width: 16px;
-            height: 16px;
-            background: #fff;
-            border: 3px solid #000;
-            border-radius: 50%;
-            top: 35px;
-        }
-
-        .left-eye {
-            left: 25px;
-        }
-
-        .right-eye {
-            right: 25px;
-        }
-
-        .pupil {
-            position: absolute;
-            width: 8px;
-            height: 8px;
-            background: #000;
-            border-radius: 50%;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            transition: all 0.15s ease;
-        }
-
-        /* Mouth */
-        .mouth {
-            position: absolute;
-            bottom: 25px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 15px;
-            border: 3px solid #000;
-            border-top: none;
-            border-radius: 0 0 30px 30px;
-            background: #b33e15;
+            opacity: 0.3;
         }
 
         .body {
@@ -189,10 +114,9 @@
         .legs {
             display: flex;
             justify-content: space-between;
-            gap: 20px;
         }
 
-        .leg-left, .leg-right {
+        .leg-left {
             width: 80px;
             height: 110px;
             background: #b33e15;
@@ -210,6 +134,16 @@
             background-color: #000;
             left: 100%;
             border-radius: 0 0 100% 0;
+            top: 50%;
+        }
+
+        .leg-right {
+            width: 80px;
+            height: 100px;
+            background: #b33e15;
+            border: 25px solid #000;
+            border-top: none;
+            border-radius: 0 0 40% 40%;
         }
 
         /* Custom cursor */
@@ -228,111 +162,56 @@
 
         /* Breathing animation */
         @keyframes breathe {
-            0%, 100% { transform: scaleY(1); }
-            50% { transform: scaleY(1.02); }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
-        .body {
-            animation: breathe 3s ease-in-out infinite;
+        .character {
+            animation: breathe 4s ease-in-out infinite;
         }
 
-        /* Blinking */
-        @keyframes blink {
-            0%, 90%, 100% { transform: scaleY(1); }
-            95% { transform: scaleY(0.1); }
-        }
-
-        .eye {
-            animation: blink 4s infinite;
-        }
-
-        .left-eye {
-            animation-delay: 0.2s;
+        /* Hover effect */
+        .character:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
         }
     </style>
 </head>
 <body>
     <div class="cursor" id="cursor"></div>
     
-    <div class="container">
-        <div class="character">
-            <div class="head">
-                <div class="eye left-eye">
-                    <div class="pupil" id="leftPupil"></div>
-                </div>
-                <div class="eye right-eye">
-                    <div class="pupil" id="rightPupil"></div>
-                </div>
-                <div class="mouth"></div>
-            </div>
-            
-            <div class="body">
-                <div class="white-reflection"></div>
-                <div class="bag">
-                </div>
-                <div class="glass">
-                </div>
-            </div>
-            
-            <div class="legs">
-                <div class="leg-left"></div>
-                <div class="leg-right"></div>
-            </div>
+    <div class="character">
+        <div class="bag"></div>
+        
+        <div class="body">
+            <div class="white-reflection"></div>
+        </div>
+        
+        <div class="glass"></div>
+        
+        <div class="legs">
+            <div class="leg-left"></div>
+            <div class="leg-right"></div>
         </div>
     </div>
 
     <script>
         const cursor = document.getElementById('cursor');
-        const leftPupil = document.getElementById('leftPupil');
-        const rightPupil = document.getElementById('rightPupil');
-        const leftEye = document.querySelector('.left-eye');
-        const rightEye = document.querySelector('.right-eye');
 
         function updateCursor(e) {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         }
 
-        function updateEyes(e) {
-            const mouseX = e.clientX;
-            const mouseY = e.clientY;
-            
-            const leftEyeRect = leftEye.getBoundingClientRect();
-            const rightEyeRect = rightEye.getBoundingClientRect();
-            
-            const leftEyeCenterX = leftEyeRect.left + leftEyeRect.width / 2;
-            const leftEyeCenterY = leftEyeRect.top + leftEyeRect.height / 2;
-            
-            const rightEyeCenterX = rightEyeRect.left + rightEyeRect.width / 2;
-            const rightEyeCenterY = rightEyeRect.top + rightEyeRect.height / 2;
-            
-            const leftAngle = Math.atan2(mouseY - leftEyeCenterY, mouseX - leftEyeCenterX);
-            const leftDistance = Math.min(4, Math.sqrt(Math.pow(mouseX - leftEyeCenterX, 2) + Math.pow(mouseY - leftEyeCenterY, 2)) / 25);
-            
-            const rightAngle = Math.atan2(mouseY - rightEyeCenterY, mouseX - rightEyeCenterX);
-            const rightDistance = Math.min(4, Math.sqrt(Math.pow(mouseX - rightEyeCenterX, 2) + Math.pow(mouseY - rightEyeCenterY, 2)) / 25);
-            
-            const leftPupilX = Math.cos(leftAngle) * leftDistance;
-            const leftPupilY = Math.sin(leftAngle) * leftDistance;
-            
-            const rightPupilX = Math.cos(rightAngle) * rightDistance;
-            const rightPupilY = Math.sin(rightAngle) * rightDistance;
-            
-            leftPupil.style.transform = `translate(calc(-50% + ${leftPupilX}px), calc(-50% + ${leftPupilY}px))`;
-            rightPupil.style.transform = `translate(calc(-50% + ${rightPupilX}px), calc(-50% + ${rightPupilY}px))`;
-        }
+        document.addEventListener('mousemove', updateCursor);
 
-        document.addEventListener('mousemove', function(e) {
-            updateCursor(e);
-            updateEyes(e);
-        });
-
+        // Click animation
         document.addEventListener('click', function() {
-            leftPupil.style.transform += ' scale(0.1)';
-            rightPupil.style.transform += ' scale(0.1)';
+            const character = document.querySelector('.character');
+            character.style.transform = 'scale(0.95)';
             
             setTimeout(() => {
-                updateEyes(event);
+                character.style.transform = '';
             }, 150);
         });
     </script>
