@@ -37,181 +37,202 @@
 
         .character {
             position: relative;
-            width: 200px;
-            height: 400px;
+            width: 160px;
+            height: 320px;
         }
 
-        /* Head - More professional circular design */
+        /* Professional Head Design */
         .head {
             position: absolute;
-            top: 20px;
+            top: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 80px;
-            background: #fff;
+            width: 60px;
+            height: 60px;
+            background: #ffffff;
+            border: 4px solid #2c3e50;
             border-radius: 50%;
-            border: 3px solid #2c3e50;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 0 0 2px #ffffff,
+                0 4px 12px rgba(44, 62, 80, 0.3),
+                inset 0 2px 4px rgba(255, 255, 255, 0.8);
         }
 
-        /* Eyes - More realistic proportions */
+        /* Enhanced Eyes */
         .eye {
             position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #2c3e50;
+            width: 8px;
+            height: 8px;
+            background: #2c3e50;
             border-radius: 50%;
-            top: 25px;
+            top: 18px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
         }
 
         .left-eye {
-            left: 20px;
+            left: 15px;
         }
 
         .right-eye {
-            right: 20px;
+            right: 15px;
         }
 
-        /* Pupils with better tracking */
+        /* Enhanced Pupils */
         .pupil {
             position: absolute;
-            width: 6px;
-            height: 6px;
-            background-color: #fff;
+            width: 3px;
+            height: 3px;
+            background: #ffffff;
             border-radius: 50%;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            transition: all 0.15s ease-out;
+            transition: all 0.12s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* Professional smile */
+        /* Professional Smile */
         .mouth {
             position: absolute;
-            bottom: 20px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
-            width: 25px;
-            height: 12px;
+            width: 20px;
+            height: 10px;
             border: 2px solid #2c3e50;
             border-top: none;
-            border-radius: 0 0 25px 25px;
+            border-radius: 0 0 20px 20px;
+            background: rgba(255, 255, 255, 0.1);
         }
 
-        /* Body - More proportional torso */
+        /* Sophisticated Body */
         .torso {
             position: absolute;
-            top: 100px;
+            top: 65px;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 120px;
-            background: #fff;
-            border: 3px solid #2c3e50;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            width: 40px;
+            height: 80px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border: 4px solid #2c3e50;
+            border-radius: 20px;
+            box-shadow: 
+                0 0 0 2px #ffffff,
+                0 6px 16px rgba(44, 62, 80, 0.25),
+                inset 0 2px 6px rgba(255, 255, 255, 0.7);
         }
 
-        /* Arms - Better proportioned */
+        /* Professional Arms */
         .arm {
             position: absolute;
-            width: 8px;
-            height: 80px;
-            background-color: #2c3e50;
-            border-radius: 4px;
-            top: 120px;
+            width: 6px;
+            height: 50px;
+            background: linear-gradient(145deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 3px;
+            top: 80px;
+            box-shadow: 
+                0 2px 6px rgba(44, 62, 80, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .left-arm {
-            left: 60px;
-            transform: rotate(-15deg);
+            left: 45px;
+            transform: rotate(-25deg);
             transform-origin: top center;
         }
 
         .right-arm {
-            right: 60px;
-            transform: rotate(15deg);
+            right: 45px;
+            transform: rotate(25deg);
             transform-origin: top center;
         }
 
-        /* Hands - More detailed */
+        /* Detailed Hands */
         .hand {
             position: absolute;
-            width: 16px;
-            height: 16px;
-            background-color: #fff;
+            width: 12px;
+            height: 12px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
             border: 2px solid #2c3e50;
             border-radius: 50%;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 
+                0 0 0 1px #ffffff,
+                0 3px 8px rgba(44, 62, 80, 0.25),
+                inset 0 1px 3px rgba(255, 255, 255, 0.8);
         }
 
         .left-hand {
-            top: 185px;
-            left: 45px;
+            top: 115px;
+            left: 25px;
         }
 
         .right-hand {
-            top: 185px;
-            right: 45px;
+            top: 115px;
+            right: 25px;
         }
 
-        /* Legs - Professional proportions */
+        /* Professional Legs */
         .leg {
             position: absolute;
-            width: 8px;
-            height: 100px;
-            background-color: #2c3e50;
-            border-radius: 4px;
-            top: 220px;
+            width: 6px;
+            height: 70px;
+            background: linear-gradient(145deg, #2c3e50 0%, #34495e 100%);
+            border-radius: 3px;
+            top: 145px;
+            box-shadow: 
+                0 2px 6px rgba(44, 62, 80, 0.3),
+                inset 0 1px 2px rgba(255, 255, 255, 0.2);
         }
 
         .left-leg {
-            left: 85px;
-            transform: rotate(-5deg);
+            left: 70px;
+            transform: rotate(-8deg);
+            transform-origin: top center;
         }
 
         .right-leg {
-            right: 85px;
-            transform: rotate(5deg);
+            right: 70px;
+            transform: rotate(8deg);
+            transform-origin: top center;
         }
 
-        /* Feet - More realistic */
+        /* Detailed Feet */
         .foot {
             position: absolute;
-            width: 25px;
-            height: 12px;
-            background-color: #fff;
+            width: 18px;
+            height: 8px;
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
             border: 2px solid #2c3e50;
-            border-radius: 6px;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            box-shadow: 
+                0 0 0 1px #ffffff,
+                0 3px 8px rgba(44, 62, 80, 0.25),
+                inset 0 1px 3px rgba(255, 255, 255, 0.8);
         }
 
         .left-foot {
-            top: 320px;
-            left: 75px;
+            top: 215px;
+            left: 58px;
         }
 
         .right-foot {
-            top: 320px;
-            right: 75px;
+            top: 215px;
+            right: 58px;
         }
 
-        /* Custom cursor */
+        /* Enhanced cursor */
         .cursor {
             position: fixed;
-            width: 12px;
-            height: 12px;
+            width: 10px;
+            height: 10px;
             background: radial-gradient(circle, #ff6b6b, #ee5a52);
             border-radius: 50%;
             pointer-events: none;
             z-index: 1000;
             transform: translate(-50%, -50%);
-            transition: all 0.1s ease;
-            box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
+            transition: all 0.08s ease;
+            box-shadow: 0 0 15px rgba(255, 107, 107, 0.6);
         }
 
-        /* Title */
         .title {
             position: absolute;
             top: 30px;
@@ -224,25 +245,20 @@
             letter-spacing: 1px;
         }
 
-        /* Hover effects */
-        .character:hover .head {
-            transform: translateX(-50%) scale(1.05);
-            transition: transform 0.3s ease;
-        }
-
-        .character:hover .torso {
-            transform: translateX(-50%) scale(1.02);
-            transition: transform 0.3s ease;
-        }
-
-        /* Breathing animation */
+        /* Subtle animations */
         @keyframes breathe {
             0%, 100% { transform: translateX(-50%) scaleY(1); }
-            50% { transform: translateX(-50%) scaleY(1.02); }
+            50% { transform: translateX(-50%) scaleY(1.03); }
         }
 
         .torso {
-            animation: breathe 4s ease-in-out infinite;
+            animation: breathe 3s ease-in-out infinite;
+        }
+
+        /* Hover effects */
+        .character:hover .head {
+            transform: translateX(-50%) scale(1.05);
+            transition: transform 0.2s ease;
         }
     </style>
 </head>
@@ -250,45 +266,34 @@
     <div class="cursor" id="cursor"></div>
     
     <div class="container">
-        <h1 class="title">Interactive Professional Character</h1>
+        <h1 class="title">Professional Character</h1>
         
         <div class="character">
-            <!-- Head -->
             <div class="head">
-                <!-- Eyes -->
                 <div class="eye left-eye">
                     <div class="pupil" id="leftPupil"></div>
                 </div>
                 <div class="eye right-eye">
                     <div class="pupil" id="rightPupil"></div>
                 </div>
-                <!-- Mouth -->
                 <div class="mouth"></div>
             </div>
             
-            <!-- Torso -->
             <div class="torso"></div>
             
-            <!-- Arms -->
             <div class="arm left-arm"></div>
             <div class="arm right-arm"></div>
-            
-            <!-- Hands -->
             <div class="hand left-hand"></div>
             <div class="hand right-hand"></div>
             
-            <!-- Legs -->
             <div class="leg left-leg"></div>
             <div class="leg right-leg"></div>
-            
-            <!-- Feet -->
             <div class="foot left-foot"></div>
             <div class="foot right-foot"></div>
         </div>
     </div>
 
     <script>
-        // Enhanced eye tracking system
         const cursor = document.getElementById('cursor');
         const leftPupil = document.getElementById('leftPupil');
         const rightPupil = document.getElementById('rightPupil');
@@ -304,7 +309,6 @@
             const mouseX = e.clientX;
             const mouseY = e.clientY;
             
-            // Get eye positions with better accuracy
             const leftEyeRect = leftEye.getBoundingClientRect();
             const rightEyeRect = rightEye.getBoundingClientRect();
             
@@ -314,14 +318,13 @@
             const rightEyeCenterX = rightEyeRect.left + rightEyeRect.width / 2;
             const rightEyeCenterY = rightEyeRect.top + rightEyeRect.height / 2;
             
-            // Enhanced eye movement calculation
+            // More precise eye tracking
             const leftAngle = Math.atan2(mouseY - leftEyeCenterY, mouseX - leftEyeCenterX);
-            const leftDistance = Math.min(3, Math.sqrt(Math.pow(mouseX - leftEyeCenterX, 2) + Math.pow(mouseY - leftEyeCenterY, 2)) / 20);
+            const leftDistance = Math.min(2.5, Math.sqrt(Math.pow(mouseX - leftEyeCenterX, 2) + Math.pow(mouseY - leftEyeCenterY, 2)) / 25);
             
             const rightAngle = Math.atan2(mouseY - rightEyeCenterY, mouseX - rightEyeCenterX);
-            const rightDistance = Math.min(3, Math.sqrt(Math.pow(mouseX - rightEyeCenterX, 2) + Math.pow(mouseY - rightEyeCenterY, 2)) / 20);
+            const rightDistance = Math.min(2.5, Math.sqrt(Math.pow(mouseX - rightEyeCenterX, 2) + Math.pow(mouseY - rightEyeCenterY, 2)) / 25);
             
-            // Smooth pupil movement
             const leftPupilX = Math.cos(leftAngle) * leftDistance;
             const leftPupilY = Math.sin(leftAngle) * leftDistance;
             
@@ -332,26 +335,18 @@
             rightPupil.style.transform = `translate(calc(-50% + ${rightPupilX}px), calc(-50% + ${rightPupilY}px))`;
         }
 
-        // Enhanced interactions
         document.addEventListener('mousemove', function(e) {
             updateCursor(e);
             updateEyes(e);
         });
 
-        // Professional blink effect
         document.addEventListener('click', function() {
-            leftPupil.style.transform += ' scale(0.1)';
-            rightPupil.style.transform += ' scale(0.1)';
+            leftPupil.style.transform += ' scale(0.2)';
+            rightPupil.style.transform += ' scale(0.2)';
             
             setTimeout(() => {
                 updateEyes(event);
-            }, 150);
-        });
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', function() {
-            cursor.style.left = '50%';
-            cursor.style.top = '50%';
+            }, 120);
         });
     </script>
 </body>
