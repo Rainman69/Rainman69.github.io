@@ -3,44 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Character Design</title>
+    <title>Project Amogus</title>
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
             min-height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             cursor: none;
+            overflow-x: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+        }
+
+        .imposter-text {
+            font-family: 'Arial Black', sans-serif;
+            font-size: 48px;
+            font-weight: 900;
+            color: #ff0000;
+            text-shadow: 
+                4px 4px 0px #000,
+                -4px -4px 0px #000,
+                4px -4px 0px #000,
+                -4px 4px 0px #000,
+                0px 4px 8px rgba(255, 0, 0, 0.5);
+            margin-bottom: 30px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         .character {
             position: relative;
+            transform: scale(1.2);
         }
 
         .character::after {
             content: '';
             position: absolute;
-            width: 500px;
-            height: 100px;
-            background-color: #bebebe;
+            width: 400px;
+            height: 80px;
+            background-color: rgba(0, 0, 0, 0.2);
             border-radius: 50%;
-            bottom: -20px;
-            z-index: -1;
+            bottom: -60px;
             left: 50%;
             transform: translateX(-50%);
-            opacity: 0.3;
+            z-index: -1;
         }
 
         .body {
             position: relative;
-            width: 240px;
-            height: 360px;
-            border: 25px solid #000;
+            width: 200px;
+            height: 280px;
+            border: 20px solid #000;
             border-bottom: none;
             border-radius: 35% 45% 0 0;
-            background-color: #b33e15;
+            background: linear-gradient(45deg, #ff0000 0%, #cc0000 100%);
             overflow: hidden;
         }
 
@@ -49,101 +83,81 @@
             position: absolute;
             width: 100%;
             height: 90%;
-            background-color: #ef7d0d;
+            background: linear-gradient(45deg, #ff4444 0%, #ff0000 100%);
             border-radius: 10% 10% 32% 39% / 0% 10% 31% 100%;
         }
 
         .white-reflection {
             position: absolute;
-            width: 110%;
-            height: 40%;
-            background-color: #fff;
+            width: 90%;
+            height: 35%;
+            background-color: rgba(255, 255, 255, 0.4);
             transform: rotate(2deg);
             top: 12px;
-            right: 26px;
+            right: 20px;
             border-radius: 30% 100% 30% 100% / 100% 90% 90% 100%;
-            opacity: 0.3;
         }
 
-        .bag {
+        .backpack {
             position: absolute;
-            width: 90px;
-            height: 200px;
-            background-color: #ef7d0d;
-            top: 130px;
-            left: -75px;
+            width: 70px;
+            height: 160px;
+            background: linear-gradient(45deg, #ff4444 0%, #ff0000 100%);
+            top: 100px;
+            left: -60px;
             z-index: -1;
-            border: 25px solid #000;
+            border: 20px solid #000;
             border-radius: 40% 0 0 40% / 30%;
             overflow: hidden;
         }
 
-        .bag::before {
+        .backpack::before {
             content: "";
             position: absolute;
             width: 100%;
-            height: 80%;
-            background: #b33e15;
+            height: 70%;
+            background: linear-gradient(45deg, #cc0000 0%, #990000 100%);
             bottom: 0;
             border-radius: 30% 70% 0 0/ 10% 50% 0 0;
         }
 
-        .glass {
+        .visor {
             position: absolute;
-            width: 200px;
-            height: 110px;
-            background-color: #4a646d;
-            border: 25px solid #000;
-            right: -40px;
-            top: 76px;
+            width: 160px;
+            height: 90px;
+            background: linear-gradient(145deg, #87ceeb 0%, #4682b4 100%);
+            border: 20px solid #000;
+            right: -30px;
+            top: 60px;
             transform: rotate(-2deg);
             border-radius: 25% 45% 40% 40%/ 50%;
             overflow: hidden;
         }
 
-        .glass::before {
+        .visor::before {
             content: "";
             position: absolute;
             right: 0;
-            width: 90%;
-            height: 85px;
-            background: #94C9DB;
+            width: 80%;
+            height: 70px;
+            background: linear-gradient(145deg, #b8e6ff 0%, #87ceeb 100%);
             border-radius: 10% 10% 27% 39% / 0% 10% 20% 100%;
         }
 
         .legs {
             display: flex;
             justify-content: space-between;
+            gap: 40px;
         }
 
-        .leg-left {
-            width: 80px;
-            height: 110px;
-            background: #b33e15;
-            border: 25px solid #000;
+        .leg-left, .leg-right {
+            width: 60px;
+            height: 80px;
+            background: linear-gradient(45deg, #ff0000 0%, #cc0000 100%);
+            border: 20px solid #000;
             border-top: none;
-            border-radius: 0 0 40% 40%;
+            border-radius: 0 0 30% 30%;
             position: relative;
-        }
-
-        .leg-left::before {
-            content: "";
-            position: absolute;
-            width: 100px;
-            height: 25px;
-            background-color: #000;
-            left: 100%;
-            border-radius: 0 0 100% 0;
-            top: 50%;
-        }
-
-        .leg-right {
-            width: 80px;
-            height: 100px;
-            background: #b33e15;
-            border: 25px solid #000;
-            border-top: none;
-            border-radius: 0 0 40% 40%;
         }
 
         /* Custom cursor */
@@ -160,60 +174,287 @@
             box-shadow: 0 0 20px rgba(255, 107, 107, 0.5);
         }
 
+        /* Explosion effects */
+        .explosion {
+            position: fixed;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            animation: explode 1s ease-out forwards;
+        }
+
+        @keyframes explode {
+            0% {
+                transform: scale(0) rotate(0deg);
+                background: radial-gradient(circle, #ffff00, #ff8800, #ff0000);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(2) rotate(180deg);
+                background: radial-gradient(circle, #ff8800, #ff0000, #800000);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(4) rotate(360deg);
+                background: radial-gradient(circle, #ff0000, #800000, transparent);
+                opacity: 0;
+            }
+        }
+
+        .fire-particle {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50% 50% 50% 0;
+            pointer-events: none;
+            z-index: 9998;
+            animation: fireMove 2s ease-out forwards;
+        }
+
+        @keyframes fireMove {
+            0% {
+                transform: scale(1) rotate(0deg);
+                background: radial-gradient(circle, #ffff00, #ff8800);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(0.2) rotate(720deg) translateY(-200px);
+                background: radial-gradient(circle, #ff0000, transparent);
+                opacity: 0;
+            }
+        }
+
+        /* Big L message */
+        .big-l {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Arial Black', sans-serif;
+            font-size: 300px;
+            font-weight: 900;
+            color: #ff0000;
+            text-shadow: 
+                8px 8px 0px #000,
+                -8px -8px 0px #000,
+                8px -8px 0px #000,
+                -8px 8px 0px #000;
+            z-index: 10000;
+            opacity: 0;
+            animation: bigLAppear 3s ease-in-out forwards;
+        }
+
+        @keyframes bigLAppear {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0) rotate(-180deg); }
+            50% { opacity: 1; transform: translate(-50%, -50%) scale(1.2) rotate(0deg); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1) rotate(0deg); }
+        }
+
+        /* 404 Error */
+        .error-404 {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: #000;
+            color: #ff0000;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 11000;
+            font-family: 'Arial', monospace;
+        }
+
+        .error-404 h1 {
+            font-size: 120px;
+            margin-bottom: 30px;
+            text-shadow: 0 0 20px #ff0000;
+        }
+
+        .error-404 p {
+            font-size: 24px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        /* Developer info */
+        .developer-info {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 10px 20px;
+            border-radius: 25px;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            z-index: 100;
+        }
+
+        .developer-info a {
+            color: #00bfff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .telegram-icon {
+            width: 20px;
+            height: 20px;
+            background: #0088cc;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
         /* Breathing animation */
         @keyframes breathe {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
+            0%, 100% { transform: scale(1.2); }
+            50% { transform: scale(1.25); }
         }
 
         .character {
             animation: breathe 4s ease-in-out infinite;
-        }
-
-        /* Hover effect */
-        .character:hover {
-            transform: scale(1.05);
-            transition: transform 0.3s ease;
         }
     </style>
 </head>
 <body>
     <div class="cursor" id="cursor"></div>
     
-    <div class="character">
-        <div class="bag"></div>
+    <div class="container">
+        <div class="imposter-text">IMPOSTER!!</div>
         
-        <div class="body">
-            <div class="white-reflection"></div>
+        <div class="character">
+            <div class="backpack"></div>
+            
+            <div class="body">
+                <div class="white-reflection"></div>
+            </div>
+            
+            <div class="visor"></div>
+            
+            <div class="legs">
+                <div class="leg-left"></div>
+                <div class="leg-right"></div>
+            </div>
         </div>
-        
-        <div class="glass"></div>
-        
-        <div class="legs">
-            <div class="leg-left"></div>
-            <div class="leg-right"></div>
-        </div>
+    </div>
+
+    <div class="developer-info">
+        Project Amogus - Telegram Developer 
+        <a href="https://t.me/DamnAmo" target="_blank">
+            <div class="telegram-icon">T</div>
+            @DamnAmo
+        </a>
+    </div>
+
+    <div class="error-404" id="error404">
+        <h1>404</h1>
+        <p>SYSTEM COMPROMISED<br>
+        ACCESS DENIED<br>
+        REFRESH TO RESTART</p>
     </div>
 
     <script>
         const cursor = document.getElementById('cursor');
+        let clickCount = 0;
+        let gameOver = false;
 
         function updateCursor(e) {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
+            if (!gameOver) {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }
+        }
+
+        function createExplosion(x, y) {
+            const explosion = document.createElement('div');
+            explosion.className = 'explosion';
+            explosion.style.left = x + 'px';
+            explosion.style.top = y + 'px';
+            document.body.appendChild(explosion);
+
+            // Create fire particles
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const particle = document.createElement('div');
+                    particle.className = 'fire-particle';
+                    particle.style.left = (x + Math.random() * 100 - 50) + 'px';
+                    particle.style.top = (y + Math.random() * 100 - 50) + 'px';
+                    document.body.appendChild(particle);
+
+                    setTimeout(() => {
+                        particle.remove();
+                    }, 2000);
+                }, i * 50);
+            }
+
+            setTimeout(() => {
+                explosion.remove();
+            }, 1000);
+        }
+
+        function triggerMultipleExplosions() {
+            const explosionCount = 12;
+            
+            for (let i = 0; i < explosionCount; i++) {
+                setTimeout(() => {
+                    const x = Math.random() * window.innerWidth;
+                    const y = Math.random() * window.innerHeight;
+                    createExplosion(x, y);
+                }, i * 200);
+            }
+        }
+
+        function showBigL() {
+            const bigL = document.createElement('div');
+            bigL.className = 'big-l';
+            bigL.textContent = 'L';
+            document.body.appendChild(bigL);
+
+            setTimeout(() => {
+                bigL.remove();
+                show404Error();
+            }, 3000);
+        }
+
+        function show404Error() {
+            document.getElementById('error404').style.display = 'flex';
+            gameOver = true;
+            cursor.style.display = 'none';
         }
 
         document.addEventListener('mousemove', updateCursor);
 
-        // Click animation
-        document.addEventListener('click', function() {
-            const character = document.querySelector('.character');
-            character.style.transform = 'scale(0.95)';
+        document.addEventListener('click', function(e) {
+            if (gameOver) return;
+
+            clickCount++;
             
-            setTimeout(() => {
-                character.style.transform = '';
-            }, 150);
+            if (clickCount === 5) {
+                triggerMultipleExplosions();
+                
+                setTimeout(() => {
+                    showBigL();
+                }, 2000);
+            }
         });
+
+        // Prevent context menu
+        document.addEventListener('contextmenu', e => e.preventDefault());
     </script>
 </body>
 </html>
