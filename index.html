@@ -3,298 +3,324 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Interactive AI Character</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Include the Puter.js library -->
-    <script src="https://js.puter.com/v2/"></script>
+    <title>Interactive Stick Figure</title>
     <style>
-        /* Custom styles for the page and character */
-        body {
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 100vh;
+        * {
             margin: 0;
-            background-color: #f0f2f5;
-            color: #1f2937;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .main-content {
-            flex-grow: 1;
+        body {
+            background-color: #f0f0f0;
+            height: 100vh;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            padding: 2rem;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            cursor: none;
         }
 
-        /* Character styles */
-        .character-container {
+        .container {
             position: relative;
-            width: 200px;
-            height: 350px;
-            margin-bottom: 2rem;
+            width: 400px;
+            height: 500px;
         }
 
-        .character-head {
+        .stick-figure {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Head */
+        .head {
             position: absolute;
-            top: 0;
+            top: 50px;
             left: 50%;
             transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            border: 3px solid #1f2937;
+            width: 120px;
+            height: 120px;
+            border: 4px solid #333;
             border-radius: 50%;
-            background-color: #ffffff;
+            background-color: transparent;
         }
 
+        /* Eyes */
         .eye {
             position: absolute;
-            width: 28px;
-            height: 28px;
-            background-color: #ffffff;
-            border: 2px solid #1f2937;
+            width: 20px;
+            height: 20px;
+            background-color: #333;
             border-radius: 50%;
             top: 35px;
         }
 
         .left-eye {
-            left: 18px;
+            left: 25px;
         }
 
         .right-eye {
-            right: 18px;
+            right: 25px;
         }
 
+        /* Pupils */
         .pupil {
             position: absolute;
-            width: 12px;
-            height: 12px;
-            background-color: #1f2937;
+            width: 8px;
+            height: 8px;
+            background-color: #fff;
             border-radius: 50%;
             top: 50%;
             left: 50%;
-            /* Initial centering transform */
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out;
+            transition: all 0.1s ease;
         }
 
-        .character-body {
+        /* Smile */
+        .mouth {
             position: absolute;
-            top: 100px;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 20px;
+            border: 3px solid #333;
+            border-top: none;
+            border-radius: 0 0 40px 40px;
+            background-color: transparent;
+        }
+
+        /* Body */
+        .body {
+            position: absolute;
+            top: 170px;
             left: 50%;
             transform: translateX(-50%);
             width: 4px;
-            height: 100px;
-            background-color: #1f2937;
+            height: 150px;
+            background-color: #333;
         }
 
+        /* Arms */
         .arm {
             position: absolute;
-            width: 4px;
-            height: 80px;
-            background-color: #1f2937;
-            top: 110px;
-            transform-origin: top center;
+            top: 200px;
+            width: 80px;
+            height: 4px;
+            background-color: #333;
+            transform-origin: center;
         }
 
         .left-arm {
-            left: calc(50% - 15px);
-            transform: rotate(30deg);
+            left: 120px;
+            transform: rotate(-30deg);
         }
 
         .right-arm {
-            right: calc(50% - 15px);
-            transform: rotate(-30deg);
+            right: 120px;
+            transform: rotate(30deg);
         }
-        
+
+        /* Legs */
         .leg {
             position: absolute;
+            top: 320px;
             width: 4px;
-            height: 90px;
-            background-color: #1f2937;
-            top: 200px;
+            height: 80px;
+            background-color: #333;
             transform-origin: top center;
         }
-        
+
         .left-leg {
-            left: calc(50% - 10px);
-            transform: rotate(15deg);
+            left: 198px;
+            transform: rotate(-20deg);
         }
-        
+
         .right-leg {
-            right: calc(50% - 10px);
-            transform: rotate(-15deg);
-        }
-        
-        #answer-output {
-            white-space: pre-wrap;
-            min-height: 6rem;
+            right: 198px;
+            transform: rotate(20deg);
         }
 
-        /* Loading spinner for the answer section */
-        .loader {
-            width: 24px;
-            height: 24px;
-            border: 3px solid #e5e7eb;
-            border-bottom-color: #3b82f6;
+        /* Hands */
+        .hand {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background-color: #333;
             border-radius: 50%;
-            display: inline-block;
-            box-sizing: border-box;
-            animation: rotation 1s linear infinite;
         }
 
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
+        .left-hand {
+            top: 180px;
+            left: 60px;
+        }
+
+        .right-hand {
+            top: 180px;
+            right: 60px;
+        }
+
+        /* Feet */
+        .foot {
+            position: absolute;
+            width: 20px;
+            height: 8px;
+            background-color: #333;
+            border-radius: 4px;
+        }
+
+        .left-foot {
+            top: 400px;
+            left: 170px;
+        }
+
+        .right-foot {
+            top: 400px;
+            right: 170px;
+        }
+
+        /* Custom cursor */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background-color: #ff6b6b;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 1000;
+            transform: translate(-50%, -50%);
+            transition: all 0.1s ease;
+        }
+
+        /* Title */
+        .title {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
-<body class="bg-gray-100 text-gray-800">
-
-    <!-- Main Content Area -->
-    <div class="main-content">
-        <!-- The Character -->
-        <div class="character-container">
-            <div class="character-head">
+<body>
+    <div class="cursor" id="cursor"></div>
+    
+    <div class="container">
+        <h1 class="title">Hello! I'm watching you! 👀</h1>
+        
+        <div class="stick-figure">
+            <!-- Head -->
+            <div class="head">
+                <!-- Eyes -->
                 <div class="eye left-eye">
-                    <div class="pupil"></div>
+                    <div class="pupil" id="leftPupil"></div>
                 </div>
                 <div class="eye right-eye">
-                    <div class="pupil"></div>
+                    <div class="pupil" id="rightPupil"></div>
                 </div>
+                <!-- Mouth -->
+                <div class="mouth"></div>
             </div>
-            <div class="character-body"></div>
+            
+            <!-- Body -->
+            <div class="body"></div>
+            
+            <!-- Arms -->
             <div class="arm left-arm"></div>
             <div class="arm right-arm"></div>
+            
+            <!-- Hands -->
+            <div class="hand left-hand"></div>
+            <div class="hand right-hand"></div>
+            
+            <!-- Legs -->
             <div class="leg left-leg"></div>
             <div class="leg right-leg"></div>
-        </div>
-
-        <!-- AI Q&A Section -->
-        <div class="w-full max-w-2xl p-6 bg-white rounded-xl shadow-lg">
-            <h2 class="text-2xl font-bold mb-4 text-center text-gray-700">Ask Me Anything</h2>
             
-            <!-- Question Input Area -->
-            <div class="mb-4">
-                 <label for="question-input" class="block text-sm font-medium text-gray-700 mb-1">Your Question</label>
-                <textarea id="question-input" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition" rows="3" placeholder="Type your question here..."></textarea>
-            </div>
-            
-            <!-- Submit Button -->
-            <button id="submit-question" class="w-full bg-blue-600 text-white font-bold py-3 px-4 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                Ask AI
-            </button>
-            
-            <!-- Answer Area -->
-            <div class="mt-6">
-                <h3 class="text-xl font-semibold mb-2 text-gray-700">Answer:</h3>
-                <div id="answer-output" class="p-4 bg-gray-50 rounded-lg border border-gray-200 min-h-[6rem] text-gray-600">
-                    The answer will appear here...
-                </div>
-            </div>
+            <!-- Feet -->
+            <div class="foot left-foot"></div>
+            <div class="foot right-foot"></div>
         </div>
     </div>
 
-    <!-- Footer -->
-    <footer class="w-full text-center p-5 bg-white border-t border-gray-200">
-        <p class="text-gray-600 inline-flex items-center">
-            Made by DamnAmo
-            <a href="https://t.me/DamnAmo" aria-label="DamnAmo on Telegram" target="_blank" rel="noopener noreferrer" class="ml-2 text-blue-500 hover:text-blue-700 transition">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">
-                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.287 5.906c-1.168.486-4.666 2.01-5.64 2.34A.63.63 0 0 0 2 8.71c.224.23.593.428.97.563.38.135.84.28 1.25.365.41.085.92.16 1.39-.24.47-.4.9-1.04 1.25-1.51.35-.47.67-1.02.93-1.44.26-.42.5-.8.7-1.1.2-.3.35-.55.45-.75.1-.2.15-.35.15-.45s-.05-.15-.1-.15-.1 0-.15.05c-.05.05-.1.1-.15.15l-1.5 1.5c-.5.5-1 .95-1.4 1.35-.4.4-.75.75-1.05 1.05-.3.3-.55.55-.75.75-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c-.05.05-.05.05-.05.05s0 .05.05.05c.05 0 .1 0 .15-.05.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15-.05.15-.1.2c-.05.05-.1.1-.15.15-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15c0 .05-.05.1-.1.15s-.1.1-.15.15c-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05s.1 0 .1.05.05.1.05.15c0 .05-.05.1-.1.15s-.1.1-.15.15c-.4.4-.8.8-1.2 1.2s-.8.8-1.2 1.2c-.4.4-.8.8-1.15 1.15-.35.35-.7.7-1 1s-.55.55-.75.75c-.2.2-.35.35-.45.45-.1.1-.15.15-.2.2s-.05.05-.05.05c0 .05.05.05.05.05s.05 0 .05-.05c.05-.05.1-.1.15-.15.4-.4.85-.8 1.3-1.2.45-.4.9-.8 1.3-1.15.4-.35.8-.7 1.15-1.05.35-.35.7-.65 1-.9.3-.25.55-.45.75-.6.2-.15.35-.25.45-.3.1-.05.15-.05.2-.05z"/>
-                </svg>
-            </a>
-        </p>
-    </footer>
-    
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const pupils = document.querySelectorAll('.pupil');
-            let inactivityTimer;
+        // Get cursor element and pupils
+        const cursor = document.getElementById('cursor');
+        const leftPupil = document.getElementById('leftPupil');
+        const rightPupil = document.getElementById('rightPupil');
+        
+        // Get eye elements to calculate positions
+        const leftEye = document.querySelector('.left-eye');
+        const rightEye = document.querySelector('.right-eye');
 
-            // --- Pupil Mouse Tracking ---
-            function movePupils(event) {
-                clearTimeout(inactivityTimer);
-                pupils.forEach(pupil => {
-                    const eye = pupil.parentElement;
-                    const rect = eye.getBoundingClientRect();
-                    const eyeCenterX = rect.left + rect.width / 2;
-                    const eyeCenterY = rect.top + rect.height / 2;
-                    const mouseX = event.clientX;
-                    const mouseY = event.clientY;
-                    const angle = Math.atan2(mouseY - eyeCenterY, mouseX - eyeCenterX);
-                    const maxMove = (rect.width / 2) - (pupil.offsetWidth / 2) - 2;
-                    const x = Math.cos(angle) * maxMove;
-                    const y = Math.sin(angle) * maxMove;
-                    pupil.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
-                });
-                inactivityTimer = setTimeout(resetPupils, 2000);
-            }
+        function updateCursor(e) {
+            // Update custom cursor position
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        }
 
-            // --- Pupil Position Reset ---
-            function resetPupils() {
-                pupils.forEach(pupil => {
-                    pupil.style.transform = 'translate(-50%, -50%)';
-                });
-            }
-
-            window.addEventListener('mousemove', movePupils);
-            resetPupils();
-
-            // --- AI Q&A Section ---
-            const submitButton = document.getElementById('submit-question');
-            const questionInput = document.getElementById('question-input');
-            const answerOutput = document.getElementById('answer-output');
-
-            submitButton.addEventListener('click', getAiAnswer);
+        function updateEyes(e) {
+            // Get mouse position
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
             
-            async function getAiAnswer() {
-                const prompt = questionInput.value.trim();
-                if (!prompt) {
-                    answerOutput.textContent = 'Please enter a question.';
-                    return;
-                }
+            // Get eye positions
+            const leftEyeRect = leftEye.getBoundingClientRect();
+            const rightEyeRect = rightEye.getBoundingClientRect();
+            
+            // Calculate eye centers
+            const leftEyeCenterX = leftEyeRect.left + leftEyeRect.width / 2;
+            const leftEyeCenterY = leftEyeRect.top + leftEyeRect.height / 2;
+            
+            const rightEyeCenterX = rightEyeRect.left + rightEyeRect.width / 2;
+            const rightEyeCenterY = rightEyeRect.top + rightEyeRect.height / 2;
+            
+            // Calculate angles and distances for left eye
+            const leftAngle = Math.atan2(mouseY - leftEyeCenterY, mouseX - leftEyeCenterX);
+            const leftDistance = Math.min(6, Math.sqrt(Math.pow(mouseX - leftEyeCenterX, 2) + Math.pow(mouseY - leftEyeCenterY, 2)) / 10);
+            
+            // Calculate angles and distances for right eye
+            const rightAngle = Math.atan2(mouseY - rightEyeCenterY, mouseX - rightEyeCenterX);
+            const rightDistance = Math.min(6, Math.sqrt(Math.pow(mouseX - rightEyeCenterX, 2) + Math.pow(mouseY - rightEyeCenterY, 2)) / 10);
+            
+            // Update pupil positions
+            const leftPupilX = Math.cos(leftAngle) * leftDistance;
+            const leftPupilY = Math.sin(leftAngle) * leftDistance;
+            
+            const rightPupilX = Math.cos(rightAngle) * rightDistance;
+            const rightPupilY = Math.sin(rightAngle) * rightDistance;
+            
+            // Apply transformations
+            leftPupil.style.transform = `translate(calc(-50% + ${leftPupilX}px), calc(-50% + ${leftPupilY}px))`;
+            rightPupil.style.transform = `translate(calc(-50% + ${rightPupilX}px), calc(-50% + ${rightPupilY}px))`;
+        }
 
-                // Show a loading indicator
-                answerOutput.innerHTML = '<div class="flex justify-center items-center"><div class="loader"></div></div>';
-                submitButton.disabled = true;
-                submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+        // Add event listeners
+        document.addEventListener('mousemove', function(e) {
+            updateCursor(e);
+            updateEyes(e);
+        });
 
-                try {
-                    // Use Puter.js to get an AI response
-                    const response = await puter.ai.chat(prompt);
+        // Add some fun interactions
+        document.addEventListener('click', function() {
+            // Blink effect on click
+            leftPupil.style.transform += ' scale(0.1)';
+            rightPupil.style.transform += ' scale(0.1)';
+            
+            setTimeout(() => {
+                updateEyes(event);
+            }, 100);
+        });
 
-                    let aiResponseText = 'Could not get a valid answer from the AI.';
-
-                    // The response from puter.ai.chat is the completed message string.
-                    if (typeof response === 'string' && response.trim() !== '') {
-                        aiResponseText = response;
-                    } else {
-                        // Log the unexpected response for debugging
-                        console.warn("Puter.js gave an unexpected response:", response);
-                    }
-                    
-                    answerOutput.textContent = aiResponseText;
-
-                } catch (error) {
-                    console.error('Error fetching AI response from Puter.js:', error);
-                    answerOutput.textContent = `An error occurred: ${error.message}. The AI service may be unavailable or require login.`;
-                } finally {
-                    // Re-enable the button after the request is complete
-                    submitButton.disabled = false;
-                    submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
-                }
-            }
+        // Initialize cursor position
+        document.addEventListener('DOMContentLoaded', function() {
+            cursor.style.left = '50%';
+            cursor.style.top = '50%';
         });
     </script>
-
 </body>
 </html>
-
