@@ -448,6 +448,42 @@ vless://25eb0cf9-b6bc-475b-bda5-b76ac9b766f6@5.255.120.217:80?mode=auto&path=%2F
 ᴄᴏᴜɴᴛʀʏ: #ᴛʜᴇɴᴇᴛʜᴇʀʟᴀɴᴅs(ɴʟ)
 ᴄᴏɴғɪɢsʜᴜʙ ₪ ᴀʀɪʏᴀ ₪ ʙᴏᴛ ₪ ʜᴇʟᴘ
 
+📶 SERVER VLESS FREE
+
+Location: 🇳🇱🇩🇪🇺🇸🇬🇧
+
+
+قابل اتصال: تمامی اپراتور ها 
+تمامی کانفیگ ها با یک ضربه کپی میشود
+
+vless://f78ce1bb-0fa6-4ef4-b4c9-b91014a7055d@172.67.67.92:80?path=%2F%3Fed%3D2560&security=&encryption=none&host=delam.ahaysiahzangi.dpdns.org&type=ws#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20172.67.67.92%20-%20%40oxnet_ir
+
+vless://1f431db3-1918-4e7b-a855-c93485e11694@104.16.104.151:80?path=%2F%3Fed%3D2560&security=&encryption=none&host=pari.parinazz.dpdns.org&type=ws#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20104.16.104.151%20-%20%40oxnet_ir
+
+vless://d0298536-d670-4045-bbb1-ddd5ea68683e@162.159.129.67:8443?path=%2Fazadnet1-706.pages.dev%2F%3Fed%3D2560%26PROT_TYPE%3Dvless&security=tls&encryption=none&host=azadnet1-706.pages.dev&fp=randomized&type=ws&sni=azadnet1-706.pages.dev#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20162.159.129.67%20-%20%40oxnet_ir
+
+vless://db9d419e-3094-4942-9313-d39afd3dd163@104.21.113.6:80?path=%2FTELEGRAM-YamYamProxy_YamYamProxy_YamYamProxy%3Fed%3D512&security=&encryption=none&host=spx.lindak.dpdns.org&type=ws#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20104.21.113.6%20-%20%40oxnet_ir
+
+vless://4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5@www.speedtest.net:443?mode=stream-one&path=%2Ftas&security=tls&alpn=h2&encryption=none&host=lama.tas-bazi.com&fp=firefox&type=xhttp&sni=lama.tas-bazi.com#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20www.speedtest.net%20-%20%40oxnet_ir
+
+vless://143856fd-c47c-4901-b86b-987bbedd20c4@45.63.107.54:443?mode=stream-one&path=%2Ftyu&security=&encryption=none&type=xhttp#%F0%9F%87%BA%F0%9F%87%B8%20%7C%20VLESS%20%7C%2045.63.107.54%20-%20%40oxnet_ir
+
+vless://4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5@www.speedtest.net:443?mode=stream-one&path=%2Ftas&security=tls&alpn=h2&encryption=none&host=azvar.tas-bazi.com&fp=firefox&type=xhttp&sni=azvar.tas-bazi.com#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20www.speedtest.net%20-%20%40oxnet_ir
+
+vless://1f431db3-1918-4e7b-a855-c93485e11694@104.16.104.151:80?path=%2F%3Fed%3D2560&security=&encryption=none&host=pari.parinazz.dpdns.org&type=ws#%F0%9F%87%A8%F0%9F%87%A6%20%7C%20VLESS%20%7C%20104.16.104.151%20-%20%40oxnet_ir
+
+vless://f73e9865-80c3-45ba-8391-597139c37bdc@91.99.129.82:443?security=&encryption=none&host=exo.ir&headerType=http&type=tcp#%F0%9F%87%A9%F0%9F%87%AA%20%7C%20VLESS%20%7C%2091.99.129.82%20-%20%40oxnet_ir
+
+vless://c264aa9e-ade2-43c9-be14-ff25059fd107@91.99.104.110:443?security=&encryption=none&host=exo.ir&headerType=http&type=tcp#%F0%9F%87%A9%F0%9F%87%AA%20%7C%20VLESS%20%7C%2091.99.104.110%20-%20%40oxnet_ir
+
+💚 Android : v2rayNG | hiddify
+🤍 IOS : Foxray | V2box | Streisand
+💻 Windows : Hiddify | v2rayN
+
+🔥🔥🔥🔥🔥🔥🔥🔥
+        ⭐@oxNet_IR
+🔥🔥🔥🔥🔥🔥🔥🔥
+
 vless://77371595-b7aa-472a-9d61-e9731861af07@300.shecanmarket.com:8443?security=&encryption=none&host=head.shecanMarket.com&headerType=http&type=tcp#[🇮🇷]t.me/ConfigsHub
 ᴄᴏᴜɴᴛʀʏ: #ɪʀᴀɴ(ɪʀ)
 ᴄᴏɴғɪɢsʜᴜʙ ₪ ᴀʀɪʏᴀ ₪ ʙᴏᴛ ₪ ʜᴇʟᴘ
