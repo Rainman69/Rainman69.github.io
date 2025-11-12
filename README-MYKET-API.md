@@ -1,7 +1,4 @@
 # How to Use Myket API
-
-This tutorial teaches you how to interact directly with the Myket API service programmatically. Only Myket API workflow is explained here—no components, configuration, or details from other projects are included.
-
 ---
 
 ## Step 1: Obtain an Authentication Token
