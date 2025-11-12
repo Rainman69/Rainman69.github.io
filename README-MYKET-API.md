@@ -101,4 +101,4 @@ console.log("APK download link:", downloadUrl);
 
 ---
 
-**Tip:** All requests require an up-to-date Authorization token. Most requests return JSON responses with app metadata and download URLs. For complete details see [Myket's official documentation](https://myket.ir/).
+**Tip:** All requests require an up-to-date Authorization token.
